@@ -5,6 +5,7 @@ import 'package:flutterkahvecisi/video.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: Video(),
   ));
 }
@@ -52,11 +53,15 @@ class _VideoState extends State<Video> {
                     backgroundColor: Colors.lime,
                     backgroundImage: AssetImage('assets/images/images.jpg'),
                   ),
-                  Text(
-                    'KAHVE ÇEKİRDEĞİ',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontFamily: 'Satisfy',
+                  Center(
+                    child: Center(
+                      child: Text(
+                        'KAHVE ÇEKİRDEĞİ',
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontFamily: 'Satisfy',
+                        ),
+                      ),
                     ),
                   ),
                   Text("SİZE KAHVE FIŞKIRTMAK İÇİN SABIRSIZLANIYOR"),

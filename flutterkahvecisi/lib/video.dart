@@ -15,7 +15,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     _controller = VideoPlayerController.asset('assets/images/Video.mp4')
       ..initialize().then((_) {
         // Videonun başarılı bir şekilde yüklendiğinde çalışacak kodlar buraya gelecek.
-        setState(() {});
+        setState(() {
+          _controller.play();
+        });
       });
   }
 
@@ -27,8 +29,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-    
+
 
       backgroundColor: Colors.brown,
       appBar: AppBar(
@@ -36,18 +39,28 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         backgroundColor: Colors.brown.shade200,
 
       ),
-      body: Center(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("KAHVELENDİN",style: TextStyle(fontSize: 50),),
+          SizedBox(height: 100,),
+
+          Center(
 
 
 
-        child: _controller.value.isInitialized
-            ? AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              )
-            : CircularProgressIndicator(),
+
+            child: _controller.value.isInitialized
+                ? AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: VideoPlayer(_controller),
+                  )
+                : CircularProgressIndicator(),
 
 
+          ),
+          SizedBox(height: 100,)
+        ],
       ),
 
 
@@ -62,7 +75,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           }
         },
         child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          _controller.value.isPlaying ? Icons.play_arrow : Icons.pause,
         ),
 
       ),
